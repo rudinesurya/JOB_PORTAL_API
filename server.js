@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const app = require('./app');
+require('dotenv').config();
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION!');
@@ -7,7 +8,7 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-const DB = "mongodb+srv://rudinesurya:M3ZSkuSMiAvxPQmL@cluster0.zgiabwe.mongodb.net/?retryWrites=true&w=majority";
+const DB = process.env.MONGO_DB_CONNECTION_STRING;
 
 mongoose
   .connect(DB, {
